@@ -16,7 +16,7 @@
         </li>
         {% for page_in_nav in site.pages %}
           {% if page_in_nav.depth == 1 %}
-            <li class="{% if page.fullpath == page_in_nav.fullpath %}active{% endif %}">
+            <li class="{% if page.slug == page_in_nav.slug %}active{% endif %}">
               {% link_to page_in_nav %}
           {% endif %}
         {% endfor %}

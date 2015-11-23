@@ -1,0 +1,50 @@
+---
+title: About
+
+# true if the page is included in the menu
+listed: true
+# true if the page is published
+published: true
+
+# true if the page can be used as a layout for new pages created by the editors
+# is_layout: true
+
+# position among sibling pages
+position: 2
+
+meta_description: "About page for the Centre for the Franco-russian and Franco-chinese friendships"
+
+# sets a redirection to the given url (301)
+# redirect_url: "<url to a page or to a remote url>"
+
+# content type that this page is templatizing
+# content_type: "<slug of one of the content types>"
+
+# editable_elements:
+#   'some_block/some_slug': "<text>"
+#   'some_block/some_slug': "<relative path to the file under the public/samples folder>"
+---
+{% extends 'layouts/simple' %}
+
+{% block content %}
+
+  {% block header %}
+    <!-- Worth a visit are the towns of Dali and Lijiang -->
+  {% endblock %}
+
+  {% block main %}
+
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <p>
+          Thank you for visiting the page of the Centre for the Franco-russian and Franco-chinese friendship. Our centre aims at making the world a place dominated by a triad of super-power that will enslave all the other people of the world to its common cultural ideology.
+        </p>
+        <p>
+          We truly hope that you like our project and you will join us dominating the world.
+        </p>
+      </div>
+    </div>
+
+  {% endblock %}
+
+{% endblock %}

@@ -6,7 +6,7 @@ is_layout: true
 
 {% block content %}
 
-<div class="container">
+<div class="container header-content">
   {% block header, short_name: true, priority: 1 %}
     <div class="jumbotron">
       {% editable_text jumbotron, rows: 5, priority: 1 %}
@@ -17,7 +17,7 @@ is_layout: true
   {% endblock %}
 </div>
 
-<div class="container">
+<div class="container main-content">
   {% block main, short_name: true %}
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">

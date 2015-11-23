@@ -5,3 +5,17 @@ body {
 footer {
   margin-top: 70px;
 }
+
+/* Image box on about page */
+/* phones */
+body.page-about {
+  .img-box {
+    width: 100%;
+    margin: 0px auto auto auto;
+  }
+  .img-resizable {
+    cursor: pointer;
+  }
+  h1, h2 { text-align: center; }
+}
+

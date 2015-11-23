@@ -26,16 +26,37 @@ meta_description: "About page for the Centre for the Franco-russian and Franco-c
 ---
 {% extends 'layouts/simple' %}
 
-{% block content %}
 
-  {% block header %}
-    <!-- Worth a visit are the towns of Dali and Lijiang -->
+  {% block content/header %}
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="img-box text-center" data-toggle="modal" data-target=".bs-example-modal-lg">
+<!--          <a href="{{ 'china_bridge.jpg' | theme_image_url | resize: '800x' }}" data-toggle="lightbox" >-->
+            <img class="img-resizable" src="{{ 'china_bridge.jpg' | theme_image_url | resize: '800x450#' }}" alt="Dali and Lijiang" />
+<!--          </a>-->
+          <p>Dali and Lijiang</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+      <div class="modal-dialog modal-lg" data-dismiss="modal">
+        <div class="modal-content">
+          <div class="modal-body text-center">
+            <img class="img-resizable" src="{{ 'china_bridge.jpg' | theme_image_url | resize: '800x' }}" alt="Dali and Lijiang" />
+            <p>Dali and Lijiang</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
   {% endblock %}
 
-  {% block main %}
+  {% block content/main %}
 
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
+      <div class="col-sm-12">
         <p>
           Thank you for visiting the page of the Centre for the Franco-russian and Franco-chinese friendship. Our centre aims at making the world a place dominated by a triad of super-power that will enslave all the other people of the world to its common cultural ideology.
         </p>
@@ -47,4 +68,3 @@ meta_description: "About page for the Centre for the Franco-russian and Franco-c
 
   {% endblock %}
 
-{% endblock %}

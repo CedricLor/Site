@@ -29,12 +29,13 @@ is_layout: false
 
     {{ 'bootstrap.css' | stylesheet_tag }}
     {{ 'application.css' | stylesheet_tag }}
+    {{ 'font.css' | stylesheet_tag }}
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body class="page-{{ page.slug }}">
     {% include 'nav' %}
 
     {% block content %}

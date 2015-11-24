@@ -30,23 +30,16 @@ meta_description: "About page for the Centre for the Franco-russian and Franco-c
   {% block content/header %}
     <div class="row">
       <div class="col-sm-12">
-<!--        <div class="img-box text-center" data-toggle="modal" data-target=".bs-example-modal-lg">-->
-        <div class="img-box text-center">
-<!--          <a href="{{ 'china_bridge.jpg' | theme_image_url | resize: '800x' }}">-->
-            <img class="img-resizable img-belittled" src="{{ 'china_bridge.jpg' | theme_image_url | resize: '800x' }}" alt="Dali and Lijiang" />
-<!--          </a>-->
-          <p>Dali and Lijiang</p>
+        <div
+          id="react-source-for-lightbox"
+          data-image-source="{{ 'china_bridge.jpg' | theme_image_url | resize: '800x' }}"
+          data-image-class="img-resizable"
+          data-image-box-class="img-box text-center"
+          data-image-alt="Dali and Lijiang">
         </div>
-      </div>
-    </div>
-
-    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-      <div class="modal-dialog modal-lg" data-dismiss="modal">
-        <div class="modal-content">
-          <div class="modal-body text-center">
-            <img class="img-resizable" src="{{ 'china_bridge.jpg' | theme_image_url | resize: '800x' }}" alt="Dali and Lijiang" />
-            <p>Dali and Lijiang</p>
-          </div>
+        <div
+          id="react-target-for-lightbox">
+          <p>Dali and Lijiang</p>
         </div>
       </div>
     </div>

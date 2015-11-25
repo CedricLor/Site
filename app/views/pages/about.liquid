@@ -14,14 +14,7 @@ position: 2
 
 meta_description: "About page for the Centre for the Franco-russian and Franco-chinese friendships"
 
-# sets a redirection to the given url (301)
-# redirect_url: "<url to a page or to a remote url>"
-
-# content type that this page is templatizing
-# content_type: "<slug of one of the content types>"
-
 editable_elements:
-    'content/header/featured_photo/photo': "china_bridge.jpg"
     'content/header/featured_photo/legend': "Dali and Lijiang"
     'content/main/about_body':
       "
@@ -32,7 +25,6 @@ editable_elements:
           We truly hope that you like our project and you will join us dominating the world.
         </p>
       "
-#   'some_block/some_slug': "<relative path to the file under the public/samples folder>"
 ---
 {% extends 'layouts/simple' %}
 
@@ -41,19 +33,21 @@ editable_elements:
     <div class="row">
       <div class="col-sm-12">
 
-        {% comment %} Featured photo block {% endcomment %}
-        {% block 'featured_photo' %}
-          {% comment %} Captured and editable legend for the featured photo {% endcomment %}
-          {% capture legend %}
-            {% editable_text "legend", format: "raw", rows: 3, hint: "Text displayed below the photo and in the ALT attribute." %}
-              ''
-            {% endeditable_text %}
-          {% endcapture %}
-          {% comment %} Captured and editable file for the featured photo {% endcomment %}
-          {% capture photo %}{% editable_file "photo" %}''{% endeditable_file %}{% endcapture %}
-          {% comment %} Including img_box liquid components (find it in snippets) {% endcomment %}
-          {% include 'img_box' with legend, photo, size: "800x>" %}
-        {% endblock %}
+      {% block 'featured_photo' %}
+        {% comment %} Captured and editable legend for the featured photo {% endcomment %}
+        {% capture legend %}
+          {% editable_text "legend", format: "raw", rows: 3, hint: "Text displayed below the photo and in the ALT attribute." %}
+            ''
+          {% endeditable_text %}
+        {% endcapture %}
+        {% comment %} Captured and editable file for the featured photo {% endcomment %}
+        {% capture photo %}{% editable_file "photo" %}china_bridge.jpg{% endeditable_file %}{% endcapture %}
+        {% if photo == '' or photo == 'china_bridge.jpg' %}
+          {% assign photo = 'china_bridge.jpg' | theme_image_url %}
+        {% endif %}
+        {% comment %} Including img_box liquid components (find it in snippets) {% endcomment %}
+        {% include 'img_box' with legend, photo: photo, size: "800x>" %}
+      {% endblock %}
 
       </div>
     </div>

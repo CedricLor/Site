@@ -1,0 +1,48 @@
+---
+title: News template
+
+# true if the page is included in the menu
+listed: false
+# true if the page is published
+published: true
+
+# true if the page can be used as a layout for new pages created by the editors
+# is_layout: true
+
+# position among sibling pages
+# position: 1
+
+# sets a redirection to the given url (301)
+# redirect_url: "<url to a page or to a remote url>"
+
+# content type that this page is templatizing
+content_type: news
+
+# editable_elements:
+#   'some_block/some_slug': "<text>"
+#   'some_block/some_slug': "<relative path to the file under the public/samples folder>"
+---
+{% extends parent %}
+
+  {% block content/main %}
+
+    <article class="news">
+      <h3 class="posted-at">
+        Posted at {{ news.posted_at | localized_date: '%-I:%M %p' }} on {{ news.posted_at | localized_date: '%B, %-d %Y' }}
+      </h3>
+
+      {% if news.tags %}
+        <p class="tags">
+          <i class="glyphicon glyphicon-tags"></i>
+          {% for tag in news.tags %}
+            <span class="label label-primary">{{ tag | escape }}</span>
+          {% endfor %}
+        </p>
+      {% endif %}
+
+      <div class="body">
+        {{ news.body }}
+      </div>
+    </article>
+
+  {% endblock %}

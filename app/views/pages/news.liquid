@@ -12,6 +12,8 @@ published: true
 # position among sibling pages
 position: 1
 
+handle: news_index
+
 # sets a redirection to the given url (301)
 # redirect_url: "<url to a page or to a remote url>"
 
@@ -24,7 +26,14 @@ position: 1
 ---
 {% extends parent %}
 
-  {% block content/header %}
+  {% block 'content/header' %}
+
+    <div class="row">
+      <div class="col-sm-12">
+        <h2 class="text-left">{{ page.title | escape }}</h2>
+      </div>
+    </div>
+
   {% endblock %}
 
   {% block content/main %}
@@ -45,7 +54,8 @@ position: 1
                 <!--</div>-->
               </div>
               <p class="btn-container">
-                <a href="/news/{{ news._slug }}"  class="btn btn-primary">
+                <!--<a href="/news/{{ news._slug }}"  class="btn btn-primary">-->
+                <a href="{% path_to news %}" class="btn btn-primary">
                   Read More
                 </a>
               </p>

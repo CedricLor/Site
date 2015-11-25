@@ -1,5 +1,5 @@
 <div class="container">
   <footer class="footer">
-    <p>&copy; {{ site.name }} {{ now | localized_date: '%Y' }} </p>
+    <p>&copy; {{ site.name | escape }} {{ now | localized_date: '%Y' }} </p>
   </footer>
 </div>

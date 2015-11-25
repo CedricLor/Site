@@ -5,53 +5,56 @@ handle: home
 meta_description: "Home page for the Centre for the Franco-russian and Franco-chinese friendships"
 listed: true
 position: 1
-editable_elements:
-    'content/main/featured_photo/photo': "/samples/pages/saint_petersburgh_ermitage.jpg"
-    'content/main/featured_photo/legend': "Saint Petersburgh, L'Ermitage"
+# editable_elements:
+#    'content/main/featured_photo/photo': "saint_petersburgh_ermitage.jpg"
+#    'content/main/featured_photo/legend': "Saint Petersburgh, L'Ermitage"
 ---
 {% extends 'layouts/simple' %}
 
 {% block content/main %}
 
-<div class="row">
-  <div class="col-lg-4">
-    {% editable_text first_column %}
-      <h2>China</h2>
-      <p>A multibillion people with multithousand years old history and a diverse and rich culinary culture, China has become in the recent years one of the major players in the world economy. And his military is catching up to overcome the Eastern empire.</p>
-    {% endeditable_text %}
+  <div class="row">
+    <div class="col-lg-4">
+      {% editable_text first_column %}
+        <h2>China</h2>
+        <p>A multibillion people with multithousand years old history and a diverse and rich culinary culture, China has become in the recent years one of the major players in the world economy. And his military is catching up to overcome the Eastern empire.</p>
+      {% endeditable_text %}
+    </div>
+    <div class="col-lg-4">
+      {% editable_text second_column %}
+        <h2>France</h2>
+        <p>A small once-big country, that keeps a large scope of influence over African and European matters, French people love wine and saussages as well as the legendary café culture.</p>
+      {% endeditable_text %}
+   </div>
+    <div class="col-lg-4">
+      {% editable_text third_column %}
+        <h2>Russia</h2>
+        <p>Deeply rooted in the cold lands, Russia is famous for its revolutionaries, its vodka, its women, its chessplayers and its weaponry which is easily available in any part of the world for affordable prices.</p>
+      {% endeditable_text %}
+    </div>
   </div>
-  <div class="col-lg-4">
-    {% editable_text second_column %}
-      <h2>France</h2>
-      <p>A small once-big country, that keeps a large scope of influence over African and European matters, French people love wine and saussages as well as the legendary café culture.</p>
-    {% endeditable_text %}
- </div>
-  <div class="col-lg-4">
-    {% editable_text third_column %}
-      <h2>Russia</h2>
-      <p>Deeply rooted in the cold lands, Russia is famous for its revolutionaries, its vodka, its women, its chessplayers and its weaponry which is easily available in any part of the world for affordable prices.</p>
-    {% endeditable_text %}
+
+  <div class="row">
+    <div class="col-sm-12">
+
+      {% block 'featured_photo' %}
+        {% comment %} Captured and editable legend for the featured photo {% endcomment %}
+        {% capture legend %}
+          {% editable_text "legend", format: "raw", rows: 3, hint: "Text displayed below the photo and in the ALT attribute." %}
+            ''
+          {% endeditable_text %}
+        {% endcapture %}
+        {% comment %} Captured and editable file for the featured photo {% endcomment %}
+        {% capture photo %}{% editable_file "photo" %}saint_petersburgh_ermitage.jpg{% endeditable_file %}{% endcapture %}
+        {% if photo == '' or photo == 'saint_petersburgh_ermitage.jpg' %}
+          {% assign photo = 'saint_petersburgh_ermitage.jpg' | theme_image_url %}
+          {{ blablabla }}
+        {% endif %}
+        {% comment %} Including img_box liquid components (find it in snippets) {% endcomment %}
+        {% include 'img_box' with legend, photo: photo, size: "800x>" %}
+      {% endblock %}
+
+    </div>
   </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-12">
-
-    {% block 'featured_photo' %}
-      {% comment %} Captured and editable legend for the featured photo {% endcomment %}
-      {% capture legend %}
-        {% editable_text "legend", format: "raw", rows: 3, hint: "Text displayed below the photo and in the ALT attribute." %}
-          ''
-        {% endeditable_text %}
-      {% endcapture %}
-      {% comment %} Captured and editable file for the featured photo {% endcomment %}
-      {% capture photo %}{% editable_file "photo" %}''{% endeditable_file %}{% endcapture %}
-      {% comment %} Including img_box liquid components (find it in snippets) {% endcomment %}
-      {% include 'img_box' with legend, photo, size: "800x>" %}
-    {% endblock %}
-
-  </div>
-</div>
-
 
 {% endblock %}

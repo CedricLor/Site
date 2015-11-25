@@ -16,6 +16,6 @@
 
 production:
   host: localhost:3000
-  handle: wealthy-galaxy-6195
+  handle: radioactive-brook-2021
   email: cedric.lor@gmail.com
   api_key: 30520fc484fc9f6139f0ce15b588ca6f63ec9f0d

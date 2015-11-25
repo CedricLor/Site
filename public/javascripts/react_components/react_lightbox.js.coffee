@@ -57,6 +57,7 @@ $ ->
   container = document.getElementById("react-target-for-lightbox")
   # json_parsed_content = JSON.parse( source.dataset.imagesource )
   imageSource = source.dataset.imageSource
+  # imageSource = if decodeURIComponent(imageSource).match(/src=\"(.*)\"/) then decodeURIComponent(imageSource).match(/src=\"(.*)\"/)[1]
   imageClass = source.dataset.imageClass
   imageAltInitial = source.dataset.imageAlt.replace(/^\s+|\s+$/g,'')
   # Get rid of the extra wrapping span added by the Engine on editable_text

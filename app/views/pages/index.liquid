@@ -5,6 +5,9 @@ handle: home
 meta_description: "Home page for the Centre for the Franco-russian and Franco-chinese friendships"
 listed: true
 position: 1
+editable_elements:
+    'content/main/featured_photo/photo': "/samples/pages/saint_petersburgh_ermitage.jpg"
+    'content/main/featured_photo/legend': "Saint Petersburgh, L'Ermitage"
 ---
 {% extends 'layouts/simple' %}
 
@@ -30,5 +33,25 @@ position: 1
     {% endeditable_text %}
   </div>
 </div>
+
+<div class="row">
+  <div class="col-sm-12">
+
+    {% block 'featured_photo' %}
+      {% comment %} Captured and editable legend for the featured photo {% endcomment %}
+      {% capture legend %}
+        {% editable_text "legend", format: "raw", rows: 3, hint: "Text displayed below the photo and in the ALT attribute." %}
+          ''
+        {% endeditable_text %}
+      {% endcapture %}
+      {% comment %} Captured and editable file for the featured photo {% endcomment %}
+      {% capture photo %}{% editable_file "photo" %}''{% endeditable_file %}{% endcapture %}
+      {% comment %} Including img_box liquid components (find it in snippets) {% endcomment %}
+      {% include 'img_box' with legend, photo, size: "800x>" %}
+    {% endblock %}
+
+  </div>
+</div>
+
 
 {% endblock %}

@@ -8,7 +8,7 @@ footer {
 
 /* Image box on about page */
 /* phones */
-body.page-about {
+body {
   .img-box {
     width: 100%;
     margin: 0px auto auto auto;
@@ -17,7 +17,7 @@ body.page-about {
       cursor: pointer;
     }
     .img-belittled {
-      height: 450px;
+      height: 300px;
     }
   }
   .lightbox {
@@ -41,3 +41,14 @@ body.page-about {
   h1, h2 { text-align: center; }
 }
 
+/* the footer */
+footer {
+  margin-top: 10px;
+  background-color: #333;
+  color: #fff;
+}
+
+footer p {
+  padding: 10px;
+  text-align: center;
+}

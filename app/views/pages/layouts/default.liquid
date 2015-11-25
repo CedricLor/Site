@@ -43,11 +43,7 @@ is_layout: false
 
     {% include 'footer' %}
 
-    {{ 'jquery.min.js' | javascript_tag }}
-    {{ 'bootstrap.min.js' | javascript_tag }}
-    {{ 'application.js' | javascript_tag }}
-    {{ 'react-with-addons.min.js' | javascript_tag }}
-    {{ 'react-dom.min.js' | javascript_tag }}
-    {{ 'test.js' | javascript_tag }}
+    {% include 'js_footer' %}
+
   </body>
 </html>

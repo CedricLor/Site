@@ -18,6 +18,7 @@ LightBox = React.createClass
   displayName: "LightBox"
   getInitialState: ->
     clicked: false
+    imageAlt: @props.imageAltInitial
 
   getDefaultProps: ->
     lightBoxClass: {
@@ -48,9 +49,8 @@ LightBox = React.createClass
         handleClick: @handleClickOnImg
         imageSource: @props.imageSource
         imageClass: "#{@props.imageClass} #{@props.imgSizeClass[@state.clicked]}"
-        imageAlt: "#{@props.imageAltInitial} #{@props.imageAltAddition[@state.clicked]}"
-
-      DOM.p null, "#{@props.imageAltInitial}"
+        imageAlt: "#{@state.imageAlt} #{@props.imageAltAddition[@state.clicked]}"
+      DOM.p null, "#{@state.imageAlt}"
 
 $ ->
   source = document.getElementById("react-source-for-lightbox")
@@ -58,7 +58,10 @@ $ ->
   # json_parsed_content = JSON.parse( source.dataset.imagesource )
   imageSource = source.dataset.imageSource
   imageClass = source.dataset.imageClass
-  imageAltInitial = source.dataset.imageAlt
+  imageAltInitial = source.dataset.imageAlt.replace(/^\s+|\s+$/g,'')
+  # Get rid of the extra wrapping span added by the Engine on editable_text
+  imageAltInitial = if imageAltInitial.match(/\>(.*)\</) then imageAltInitial.match(/\>(.*)\</)[1].replace(/^\s+|\s+$/g,'') else imageAltInitial.replace(/^\s+|\s+$/g,'')
+  console.log(imageAltInitial)
   imgBoxClass = source.dataset.imageBoxClass
   ReactDOM.render(
     React.createElement LightBox,

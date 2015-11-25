@@ -20,8 +20,18 @@ meta_description: "About page for the Centre for the Franco-russian and Franco-c
 # content type that this page is templatizing
 # content_type: "<slug of one of the content types>"
 
-# editable_elements:
-#   'some_block/some_slug': "<text>"
+editable_elements:
+    'content/header/featured_photo/legend': "Dali and Lijiang"
+    'content/main/about_body':
+      "
+        <p>
+          Thank you for visiting the page of the Centre for the Franco-russian and Franco-chinese friendship. Our centre aims at making the world a place dominated by a triad of super-powers that will enslave all the other people of the world to its common cultural ideology.
+        </p>
+        <p>
+          We truly hope that you like our project and you will join us dominating the world.
+        </p>
+      "
+    'content/header/featured_photo/photo': "/samples/pages/china_bridge.jpg"
 #   'some_block/some_slug': "<relative path to the file under the public/samples folder>"
 ---
 {% extends 'layouts/simple' %}
@@ -30,33 +40,44 @@ meta_description: "About page for the Centre for the Franco-russian and Franco-c
   {% block content/header %}
     <div class="row">
       <div class="col-sm-12">
-        <div
-          id="react-source-for-lightbox"
-          data-image-source="{{ 'china_bridge.jpg' | theme_image_url | resize: '800x' }}"
-          data-image-class="img-resizable"
-          data-image-box-class="img-box text-center"
-          data-image-alt="Dali and Lijiang">
-        </div>
-        <div
-          id="react-target-for-lightbox">
-          <p>Dali and Lijiang</p>
-        </div>
+
+        {% comment %} Featured photo block {% endcomment %}
+        {% block 'featured_photo' %}
+          {% comment %} Captured and editable legend for the featured photo {% endcomment %}
+          {% capture legend %}
+            {% editable_text "legend", format: "raw", rows: 3, hint: "Text displayed below the photo and in the ALT attribute." %}
+              ''
+            {% endeditable_text %}
+          {% endcapture %}
+          {% comment %} Captured and editable file for the featured photo {% endcomment %}
+          {% capture photo %}{% editable_file "photo" %}''{% endeditable_file %}{% endcapture %}
+          {% comment %} React handles {% endcomment %}
+          <div
+            id="react-source-for-lightbox"
+            data-image-source="{{ photo | resize: '800x' }}"
+            data-image-class="img-resizable"
+            data-image-box-class="img-box text-center"
+            data-image-alt='{{ legend | escape }}'>
+          </div>
+          <div
+            id="react-target-for-lightbox">
+          </div>
+        {% endblock %}
+
       </div>
     </div>
 
-
   {% endblock %}
+
 
   {% block content/main %}
 
     <div class="row">
       <div class="col-sm-12">
-        <p>
-          Thank you for visiting the page of the Centre for the Franco-russian and Franco-chinese friendship. Our centre aims at making the world a place dominated by a triad of super-power that will enslave all the other people of the world to its common cultural ideology.
-        </p>
-        <p>
-          We truly hope that you like our project and you will join us dominating the world.
-        </p>
+        {% comment %} Etitable text for the description (about_body) {% endcomment %}
+        {% editable_text "about_body", rows: 20, hint: "Please enter here any text describing your organization." %}
+          ''
+        {% endeditable_text %}
       </div>
     </div>
 

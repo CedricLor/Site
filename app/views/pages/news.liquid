@@ -1,0 +1,59 @@
+---
+title: News
+
+# true if the page is included in the menu
+listed: true
+# true if the page is published
+published: true
+
+# true if the page can be used as a layout for new pages created by the editors
+# is_layout: true
+
+# position among sibling pages
+position: 1
+
+# sets a redirection to the given url (301)
+# redirect_url: "<url to a page or to a remote url>"
+
+# content type that this page is templatizing
+# content_type: "<slug of one of the content types>"
+
+# editable_elements:
+#   'some_block/some_slug': "<text>"
+#   'some_block/some_slug': "<relative path to the file under the public/samples folder>"
+---
+{% extends parent %}
+
+  {% block content/header %}
+  {% endblock %}
+
+  {% block content/main %}
+    {% editable_model news, hint: 'some text' %}
+      <div class="row news">
+        {% for news in contents.news %}
+          <div class="news-listing col-sm-6 col-md-4">
+            <div class="thumbnail outer-wrapper-news-div">
+              <div class="inner-wrapper-news-div">
+                <!--div class="news-sizing-wrapper">-->
+                  {% if news.featured_image.url %}
+                    <img src="{{ news.featured_image.url | resize: '400x200#' }}" alt="{{ news.title | escape }}">
+                  {% endif %}
+                  <div class="legend">
+                    <h3>{{ news.title | escape }}</h3>
+                    <div class="teaser">{{ news.teaser }}</div>
+                  </div>
+                <!--</div>-->
+              </div>
+              <p class="btn-container">
+                <a href="/news/{{ news._slug }}"  class="btn btn-primary">
+                  Read More
+                </a>
+              </p>
+            </div>
+          </div>
+          {% cycle  '', '<div class="clearfix visible-sm">&nbsp;</div>' %}
+          {% cycle '', '', '<div class="clearfix hidden-sm hidden-xs">&nbsp;</div>'  %}
+        {% endfor %}
+      </div>
+    {% endeditable_model %}
+  {% endblock %}

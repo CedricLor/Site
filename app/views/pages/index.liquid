@@ -1,13 +1,10 @@
 ---
 title: Home page
 published: true
+listed: true
 handle: home
 meta_description: "Home page for the Centre for the Franco-russian and Franco-chinese friendships"
-listed: true
 position: 0
-# editable_elements:
-#    'content/main/featured_photo/photo': "saint_petersburgh_ermitage.jpg"
-#    'content/main/featured_photo/legend': "Saint Petersburgh, L'Ermitage"
 ---
 {% extends 'layouts/simple' %}
 
@@ -96,7 +93,6 @@ position: 0
         {% capture photo %}{% editable_file "photo" %}saint_petersburgh_ermitage.jpg{% endeditable_file %}{% endcapture %}
         {% if photo == '' or photo == 'saint_petersburgh_ermitage.jpg' %}
           {% assign photo = 'saint_petersburgh_ermitage.jpg' | theme_image_url %}
-          {{ blablabla }}
         {% endif %}
         {% comment %} Including img_box liquid components (find it in snippets) {% endcomment %}
         {% include 'img_box' with legend, photo: photo, size: "800x>" %}

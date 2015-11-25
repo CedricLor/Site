@@ -40,9 +40,27 @@ content_type: news
         </p>
       {% endif %}
 
-      <div class="body">
+      <div class="news-body">
         {{ news.body }}
       </div>
+
+      {% if news.photos.size > 0 %}
+        <h3>Photos</h3>
+          <div class="photos row">
+            {% for photo in news.photos %}
+              <div class="photo col-xs-6 col-sm-4 col-md-3">
+                {% assign legend = photo.legend %}
+                {% assign size = '350x300#' %}
+                {% include 'img_box' with photo: photo.file, legend, size  %}
+              </div>
+              {% cycle  '', '<div class="clearfix visible-xs">&nbsp;</div>' %}
+              {% cycle '', '', '<div class="clearfix visible-sm ">&nbsp;</div>' %}
+              {% cycle '', '', '', '<div class="clearfix hidden-sm hidden-xs">&nbsp;</div>' %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+
     </article>
 
   {% endblock %}

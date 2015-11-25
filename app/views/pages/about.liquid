@@ -1,17 +1,8 @@
 ---
 title: About
-
-# true if the page is included in the menu
 listed: true
-# true if the page is published
 published: true
-
-# true if the page can be used as a layout for new pages created by the editors
-# is_layout: true
-
-# position among sibling pages
 position: 2
-
 meta_description: "About page for the Centre for the Franco-russian and Franco-chinese friendships"
 
 editable_elements:
@@ -44,6 +35,7 @@ editable_elements:
         {% capture photo %}{% editable_file "photo" %}china_bridge.jpg{% endeditable_file %}{% endcapture %}
         {% if photo == '' or photo == 'china_bridge.jpg' %}
           {% assign photo = 'china_bridge.jpg' | theme_image_url %}
+          {{ blablabla }}
         {% endif %}
         {% comment %} Including img_box liquid components (find it in snippets) {% endcomment %}
         {% include 'img_box' with legend, photo: photo, size: "800x>" %}

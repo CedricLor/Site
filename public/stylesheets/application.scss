@@ -56,37 +56,34 @@ body {
 
 /* Image box on about page */
 /* phones */
-body {
-  .img-box {
-    width: 100%;
-    margin: 0px auto auto auto;
-    .img-resizable {
-      width: 800px;
-      cursor: pointer;
-    }
-    .img-belittled {
-      height: 300px;
-    }
-  }
-  .lightbox {
-    position: fixed;
-    top: 0px; left: 0px;
-    bottom: 0px; right: 0px;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    text-align: center;
-    background-color: rgba(27, 26, 26, 0.43);
-    z-index: 1050;
+.img-box {
+  width: 100%;
+  margin: 0px auto auto auto;
+  .img-resizable {
+    width: 800px;
     cursor: pointer;
-    .img-enlarged {
-       width: 800px;
-    }
-    p {
-      color: white;
-      font-weight: bold;
-    }
   }
-  h1, h2 { text-align: center; }
+  .img-belittled {
+    height: 300px;
+  }
+}
+.lightbox {
+  position: fixed;
+  top: 0px; left: 0px;
+  bottom: 0px; right: 0px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+  background-color: rgba(27, 26, 26, 0.43);
+  z-index: 1050;
+  cursor: pointer;
+  .img-enlarged {
+     width: 800px;
+  }
+  p {
+    color: white;
+    font-weight: bold;
+  }
 }
 
 /* the footer */
@@ -94,9 +91,8 @@ footer {
   margin-top: 10px;
   background-color: #333;
   color: #fff;
-}
-
-footer p {
-  padding: 10px;
-  text-align: center;
+  p {
+    padding: 10px;
+    text-align: center;
+  }
 }

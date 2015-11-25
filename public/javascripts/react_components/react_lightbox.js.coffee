@@ -8,7 +8,7 @@ Image = React.createClass
   render: ->
     DOM.img
       src: @props.imageSource
-      className: @props.imageClass
+      className: "#{@props.imageClass} img-thumbnail"
       alt: @props.imageAlt
       onClick: @props.handleClick
 
@@ -52,25 +52,29 @@ LightBox = React.createClass
         imageAlt: "#{@state.imageAlt} #{@props.imageAltAddition[@state.clicked]}"
       DOM.p null, "#{@state.imageAlt}"
 
-$ ->
-  source = document.getElementById("react-source-for-lightbox")
-  container = document.getElementById("react-target-for-lightbox")
+
+create_light_box_with = (dom_element) ->
   # json_parsed_content = JSON.parse( source.dataset.imagesource )
-  imageSource = source.dataset.imageSource
+  imageSource = dom_element.dataset.imageSource
   # imageSource = if decodeURIComponent(imageSource).match(/src=\"(.*)\"/) then decodeURIComponent(imageSource).match(/src=\"(.*)\"/)[1]
-  imageClass = source.dataset.imageClass
-  imageAltInitial = source.dataset.imageAlt.replace(/^\s+|\s+$/g,'')
+  imageClass = dom_element.dataset.imageClass
+  imageAltInitial = dom_element.dataset.imageAlt.replace(/^\s+|\s+$/g,'')
   # Get rid of the extra wrapping span added by the Engine on editable_text
   imageAltInitial = if imageAltInitial.match(/\>(.*)\</) then imageAltInitial.match(/\>(.*)\</)[1].replace(/^\s+|\s+$/g,'') else imageAltInitial.replace(/^\s+|\s+$/g,'')
-  imgBoxClass = source.dataset.imageBoxClass
+  imgBoxClass = dom_element.dataset.imageBoxClass
   ReactDOM.render(
     React.createElement LightBox,
       imageSource: imageSource
       imageClass: imageClass
       imageAltInitial: imageAltInitial
       imgBoxClass: imgBoxClass
-    container
+    dom_element
   )
+
+$ ->
+  dom_elements = document.getElementsByClassName("react-lightbox")
+  create_light_box_with dom_element for dom_element in dom_elements
+
 
 # This is what the container should look like before render
 # <div

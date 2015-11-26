@@ -1,28 +1,10 @@
 ---
 title: News
-
-# true if the page is included in the menu
 listed: true
-# true if the page is published
 published: true
-
-# true if the page can be used as a layout for new pages created by the editors
-# is_layout: true
-
-# position among sibling pages
 position: 1
-
 handle: news_index
-
-# sets a redirection to the given url (301)
-# redirect_url: "<url to a page or to a remote url>"
-
-# content type that this page is templatizing
-# content_type: "<slug of one of the content types>"
-
-# editable_elements:
-#   'some_block/some_slug': "<text>"
-#   'some_block/some_slug': "<relative path to the file under the public/samples folder>"
+meta_description: "News page of the website of the Centre for the Franco-russian and Franco-chinese friendships"
 ---
 {% extends parent %}
 
@@ -56,7 +38,7 @@ handle: news_index
               <p class="btn-container">
                 <!--<a href="/news/{{ news._slug }}"  class="btn btn-primary">-->
                 <a href="{% path_to news %}" class="btn btn-primary">
-                  Read More
+                  {{ 'read_more' | translate }}
                 </a>
               </p>
             </div>

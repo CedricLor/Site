@@ -6,3 +6,11 @@
 # hello_world:
 #   en: Hello world !
 #   fr: Bonjour le monde !
+
+home_page:
+  en: "Home"
+  fr: "Accueil"
+
+read_more:
+  en: "Read more..."
+  fr: "Lire la suite..."

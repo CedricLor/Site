@@ -12,7 +12,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li class="{% if page.handle == 'home' %}active{% endif %}">
-          <a href="{% path_to home %}">Home</a>
+          <a href="{% path_to home %}">{{ 'home_page' | translate }}</a>
         </li>
         {% for page_in_nav in site.pages %}
           {% if page_in_nav.depth == 1 %}

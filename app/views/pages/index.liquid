@@ -3,8 +3,12 @@ title: Home page
 published: true
 listed: true
 handle: home
-meta_description: "Home page for the Centre for the Franco-russian and Franco-chinese friendships"
+meta_description: "Home page of the website of the Centre for the Franco-russian and Franco-chinese friendships"
 position: 0
+editable_elements:
+  'content/header/jumbotron_title': Enforce peace by friendship
+  'content/header/jumbotron_sub_title': Discover what we do for transcontinental friendship.
+  'content/header/btn_text': Browse our news
 ---
 {% extends 'layouts/simple' %}
 
@@ -17,13 +21,13 @@ position: 0
   {% endcapture %}
 
   {% capture jumbotron_sub_title %}
-    {% editable_text "jumbotron_sub_title", format: "raw", rows: 1, priority: 1 %}
+    {% editable_text "jumbotron_sub_title", format: "raw", rows: 2, priority: 2 %}
       Discover what we do for transcontinental friendship.
     {% endeditable_text %}
   {% endcapture %}
 
   {% capture btn_text %}
-    {% editable_text "btn_text", format: "raw", rows: 1, priority: 1 %}
+    {% editable_text "btn_text", format: "raw", rows: 1, priority: 3 %}
       Browse our news
     {% endeditable_text %}
   {% endcapture %}

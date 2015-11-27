@@ -1,4 +1,7 @@
 /.bundle
-/config/deploy.yml
+config/deploy.yml
 /log
 .DS_Store
+
+/config/deploy.yml
+dragonfly.log

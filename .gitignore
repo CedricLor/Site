@@ -1,7 +1,6 @@
 /.bundle
-config/deploy.yml
 /log
 .DS_Store
-
-/config/deploy.yml
+.gitignore
+config/deploy.yml
 dragonfly.log

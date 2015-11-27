@@ -9,7 +9,7 @@ is_layout: false
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="keywords" content="{{ site.meta_keywords | escape }} {{ page.meta_keywords | escape }}">
+    <meta name="keywords" content="{{ site.meta_keywords | escape | translate }} {{ page.meta_keywords | escape }}">
     {% if page.meta_description %}
       <meta name="description" content="{{ page.meta_description | escape }}">
     {% else %}
@@ -17,11 +17,11 @@ is_layout: false
     {% endif %}
 
     <title>
-      {{ page.title | escape }} - {{ site.name | escape }} |
+      {{ page.title | escape }} |
       {% if page.seo_title %}
         {{ page.seo_title | escape }}
       {% else %}
-        {{ site.seo_title | escape }}
+        {{ site.seo_title | escape | translate }}
       {% endif %}
     </title>
 
@@ -31,6 +31,15 @@ is_layout: false
     {{ 'application.css' | stylesheet_tag }}
     {{ 'font.css' | stylesheet_tag }}
 
+    {% block 'css_injection' %}
+      {% capture css_injection %}
+        {% editable_text "css_injection", format: "raw", rows: 20, priority: 5 %}
+        {% endeditable_text %}
+      {% endcapture %}
+    {% endblock %}
+    <style type="text/css">
+      {{ css_injection }}
+    </style>
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>

@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'locomotivecms_wagon', '2.0.0.rc3'
+gem 'locomotivecms_steam', git: 'https://github.com/locomotivecms/steam', branch: 'master'
+gem 'locomotivecms_wagon', '2.0.0.rc4'
 
 group :development do
   # Mac OS X

@@ -41,10 +41,10 @@ fields:
     label: Title # Human readable name of the field
     type: string
     required: true
-    localized: false
+    localized: true
 
 - posted_at: # The lowercase, underscored name of the field
-    label: true # Human readable name of the field
+    label: Posted at # Human readable name of the field
     type: date_time
     required: true
     localized: false
@@ -60,7 +60,7 @@ fields:
     type: text
     required: false
     hint: "A short lead-in to the news, displayed when listing posts"
-    localized: false
+    localized: true
     text_formatting: html # html (uses rich text editor), markdown or text (uses plain text editor)
 
 - featured_image: # The lowercase, underscored name of the field
@@ -75,7 +75,7 @@ fields:
     type: text
     required: true
     hint: The full news text
-    localized: false
+    localized: true
     text_formatting: html # html (uses rich text editor), markdown or text (uses plain text editor)
 
 - photos:
@@ -84,5 +84,5 @@ fields:
     required: false
     localized: false
     class_name: photos # Define the slug of the target content type (eg. comments)
-    inverse_of: post  # Define the name of the field referring to news in the target content type
+    inverse_of: news  # Define the name of the field referring to news in the target content type
     ui_enabled: true # If you want to manage the entries of the relationship directly from the source entry

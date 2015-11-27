@@ -41,7 +41,7 @@ fields:
     label: Legend # Human readable name of the field
     type: string
     required: true
-    localized: false
+    localized: true
 
 - file: # The lowercase, underscored name of the field
     label: File # Human readable name of the field
@@ -49,9 +49,9 @@ fields:
     required: true
     localized: false
 
-- post: # The lowercase, underscored name of the field
+- news: # The lowercase, underscored name of the field
     label: News # Human readable name of the field
     type: belongs_to
     required: false
     localized: false
-    classname: posts
+    class_name: news

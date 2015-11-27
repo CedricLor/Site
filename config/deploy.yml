@@ -14,8 +14,8 @@
 #   password: apassword
 #   # api_key: <your api key here>
 
-production:
+development:
   host: localhost:3000
-  handle: radioactive-brook-2021
+  handle: wooden-meadow-4163
   email: cedric.lor@gmail.com
   api_key: 30520fc484fc9f6139f0ce15b588ca6f63ec9f0d

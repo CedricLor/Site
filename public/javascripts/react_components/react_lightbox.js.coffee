@@ -74,13 +74,3 @@ create_light_box_with = (dom_element) ->
 $ ->
   dom_elements = document.getElementsByClassName("react-lightbox")
   create_light_box_with dom_element for dom_element in dom_elements
-
-
-# This is what the container should look like before render
-# <div
-#   id="react-source-for-lightbox"
-#   data-image-source="json_data_set">
-# </div>
-# <div
-#   id="react-target-for-lightbox">
-# </div>

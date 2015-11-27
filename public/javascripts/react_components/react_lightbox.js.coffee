@@ -1,7 +1,8 @@
 DOM = React.DOM
 
-##########
+########################################
 # Image component
+########################################
 Image = React.createClass
   displayName: "Image"
 
@@ -10,10 +11,11 @@ Image = React.createClass
       src: @props.imageSource
       className: "#{@props.imageClass} img-thumbnail"
       alt: @props.imageAlt
-      onClick: @props.handleClick
+      onClick: @props._handleClick
 
-##########
-# LightBox component
+########################################
+## LightBox compoenent
+########################################
 LightBox = React.createClass
   displayName: "LightBox"
   getInitialState: ->
@@ -34,25 +36,51 @@ LightBox = React.createClass
       false: ""
     }
 
-  handleClickOnImg: (event) ->
+  componentDidMount: ->
+    @_subscribeToEvents()
+
+  componentWillUnmount: ->
+    @_unsubscribeFromEvents()
+
+  _updateText: (data) ->
+    imageAlt = data.content
+    @setState imageAlt: imageAlt
+
+  _refreshText: (msg, data) ->
+    console.log(data.view)
+    console.log(data.view.el)
+    console.log(data.view.el.id)
+    console.log(data.view.el.innerText)
+    @_updateText(data) if data.view.el.innerText.match(/LEGEND/)
+
+  _subscribeToEvents: ->
+    window.parent.PubSub.subscribe 'inputs.text_changed', @_refreshText
+
+  _unsubscribeFromEvents: ->
+    PubSub.unsubscribe 'resetButton:onClick'
+
+  _handleClickOnImg: (event) ->
     clicked = if @state.clicked == false then true else false
     @setState clicked: clicked
 
-  handleClickOnDiv: (event) ->
-    clicked = if @state.clicked == true then @handleClickOnImg()
+  _handleClickOnDiv: (event) ->
+    clicked = if @state.clicked == true then @_handleClickOnImg()
 
   render: ->
     DOM.div
-      onClick: @handleClickOnDiv
+      onClick: @_handleClickOnDiv
       className: "#{@props.imgBoxClass} #{@props.lightBoxClass[@state.clicked]}"
       React.createElement Image,
-        handleClick: @handleClickOnImg
+        handleClick: @_handleClickOnImg
         imageSource: @props.imageSource
         imageClass: "#{@props.imageClass} #{@props.imgSizeClass[@state.clicked]}"
         imageAlt: "#{@state.imageAlt} #{@props.imageAltAddition[@state.clicked]}"
       DOM.p null, "#{@state.imageAlt}"
 
 
+########################################
+## React Render function
+########################################
 create_light_box_with = (dom_element) ->
   # json_parsed_content = JSON.parse( source.dataset.imagesource )
   imageSource = dom_element.dataset.imageSource
@@ -71,6 +99,9 @@ create_light_box_with = (dom_element) ->
     dom_element
   )
 
+########################################
+# Init and loop over various React tags
+########################################
 $ ->
   dom_elements = document.getElementsByClassName("react-lightbox")
   create_light_box_with dom_element for dom_element in dom_elements

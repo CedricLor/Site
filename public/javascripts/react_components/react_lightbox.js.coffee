@@ -1,6 +1,15 @@
 DOM = React.DOM
 
 ########################################
+# Lgend component
+########################################
+Legend = React.createClass
+  displayName: "Legend"
+
+  render: ->
+    DOM.p null, "#{@props.imageAlt}"
+
+########################################
 # Image component
 ########################################
 Image = React.createClass
@@ -37,27 +46,22 @@ LightBox = React.createClass
     }
 
   componentDidMount: ->
-    @_subscribeToEvents()
+    @_subscribeToEvents() if window.parent.PubSub
 
   componentWillUnmount: ->
-    @_unsubscribeFromEvents()
-
-  _updateText: (data) ->
-    imageAlt = data.content
-    @setState imageAlt: imageAlt
-
-  _refreshText: (msg, data) ->
-    console.log(data.view)
-    console.log(data.view.el)
-    console.log(data.view.el.id)
-    console.log(data.view.el.innerText)
-    @_updateText(data) if data.view.el.innerText.match(/LEGEND/)
+    @_unsubscribeFromEvents() if @state.autoLiveOn == true
 
   _subscribeToEvents: ->
     window.parent.PubSub.subscribe 'inputs.text_changed', @_refreshText
 
   _unsubscribeFromEvents: ->
-    PubSub.unsubscribe 'resetButton:onClick'
+    PubSub.unsubscribe 'inputs.text_changed'
+
+  _refreshText: (msg, data) ->
+    console.log(data.view.el)
+    if data.view.el.innerText.match(/LEGEND/)
+      imageAlt = data.content
+      @setState imageAlt: imageAlt
 
   _handleClickOnImg: (event) ->
     clicked = if @state.clicked == false then true else false
@@ -75,8 +79,8 @@ LightBox = React.createClass
         imageSource: @props.imageSource
         imageClass: "#{@props.imageClass} #{@props.imgSizeClass[@state.clicked]}"
         imageAlt: "#{@state.imageAlt} #{@props.imageAltAddition[@state.clicked]}"
-      DOM.p null, "#{@state.imageAlt}"
-
+      React.createElement Legend,
+        imageAlt: "#{@state.imageAlt} #{@props.imageAltAddition[@state.clicked]}"
 
 ########################################
 ## React Render function

@@ -20,7 +20,7 @@ Image = React.createClass
       src: @props.imageSource
       className: "#{@props.imageClass} img-thumbnail"
       alt: @props.imageAlt
-      onClick: @props._handleClick
+      onClick: @props.handleClick
 
 ########################################
 ## LightBox compoenent
@@ -46,31 +46,35 @@ LightBox = React.createClass
     }
 
   componentDidMount: ->
+    console.log("in componentDidMount")
     @_subscribeToEvents() if window.parent.PubSub
 
   componentWillUnmount: ->
-    @_unsubscribeFromEvents() if @state.autoLiveOn == true
+    @_unsubscribeFromEvents() if window.parent.PubSub
 
   _subscribeToEvents: ->
+    console.log("in subscribeToEvents")
     window.parent.PubSub.subscribe 'inputs.text_changed', @_refreshText
 
   _unsubscribeFromEvents: ->
     PubSub.unsubscribe 'inputs.text_changed'
 
   _refreshText: (msg, data) ->
-    console.log(data.view.el)
     if data.view.el.innerText.match(/LEGEND/)
       imageAlt = data.content
       @setState imageAlt: imageAlt
 
   _handleClickOnImg: (event) ->
+    console.log("in handleClickOnImg")
     clicked = if @state.clicked == false then true else false
     @setState clicked: clicked
 
   _handleClickOnDiv: (event) ->
+    console.log("in handleClickOnDiv")
     clicked = if @state.clicked == true then @_handleClickOnImg()
 
   render: ->
+    console.log("in render")
     DOM.div
       onClick: @_handleClickOnDiv
       className: "#{@props.imgBoxClass} #{@props.lightBoxClass[@state.clicked]}"

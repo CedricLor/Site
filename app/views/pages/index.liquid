@@ -3,8 +3,7 @@ title: Home
 published: true
 listed: true
 handle: home
-meta_description:
-  en: "Home page of the website of the Centre for the Franco-russian and Franco-chinese friendships"
+meta_description: "Home page of the website of the Centre for the Franco-russian and Franco-chinese friendships"
 position: 0
 editable_elements:
   'content/header/jumbotron_title': "Enforce peace by friendship"
@@ -25,6 +24,7 @@ editable_elements:
       <h2>Russia</h2>
       <p>Deeply rooted in the cold lands, Russia is famous for its revolutionaries, its vodka, its women, its chessplayers and its weaponry which is easily available in any part of the world for affordable prices.</p>
       "
+  'content/main/featured_photo/legend': "Ermitage Museum, Saint Petersburgh"
 ---
 {% extends 'layouts/simple' %}
 
@@ -113,7 +113,7 @@ editable_elements:
           {% assign photo = 'saint_petersburgh_ermitage.jpg' | theme_image_url %}
         {% endif %}
         {% comment %} Including img_box liquid components (find it in snippets) {% endcomment %}
-        {% include 'img_box' with legend: page.editable_elements.content.header.featured_photo.legend, photo: photo, size: "800x>" %}
+        {% include 'img_box' with legend: page.editable_elements.content.main.featured_photo.legend, photo: photo, size: "800x>" %}
       {% endblock %}
 
     </div>

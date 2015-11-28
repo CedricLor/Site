@@ -46,14 +46,12 @@ LightBox = React.createClass
     }
 
   componentDidMount: ->
-    console.log("in componentDidMount")
     @_subscribeToEvents() if window.parent.PubSub
 
   componentWillUnmount: ->
     @_unsubscribeFromEvents() if window.parent.PubSub
 
   _subscribeToEvents: ->
-    console.log("in subscribeToEvents")
     window.parent.PubSub.subscribe 'inputs.text_changed', @_refreshText
 
   _unsubscribeFromEvents: ->
@@ -65,16 +63,13 @@ LightBox = React.createClass
       @setState imageAlt: imageAlt
 
   _handleClickOnImg: (event) ->
-    console.log("in handleClickOnImg")
     clicked = if @state.clicked == false then true else false
     @setState clicked: clicked
 
   _handleClickOnDiv: (event) ->
-    console.log("in handleClickOnDiv")
     clicked = if @state.clicked == true then @_handleClickOnImg()
 
   render: ->
-    console.log("in render")
     DOM.div
       onClick: @_handleClickOnDiv
       className: "#{@props.imgBoxClass} #{@props.lightBoxClass[@state.clicked]}"
@@ -112,6 +107,4 @@ create_light_box_with = (dom_element) ->
 ########################################
 $ ->
   dom_elements = document.getElementsByClassName("react-lightbox")
-  console.log("hello")
-  console.log(dom_elements)
   create_light_box_with dom_element for dom_element in dom_elements

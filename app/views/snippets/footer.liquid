@@ -1,5 +1,6 @@
 <div class="container">
   <footer class="footer">
     <p>&copy; {{ "site_published_title" | translate }} {{ now | localized_date: '%Y' }} </p>
+    {% locale_switcher label: locale, sep: ' - ' %}
   </footer>
 </div>

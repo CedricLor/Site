@@ -58,3 +58,9 @@ site_published_title:
 posted_at_format:
   en: 'Posted at %-I:%M %p on %B, %-d %Y'
   fr: 'Publié à %-I:%M %p le %-d %B %Y'
+
+locale:
+  en: 'English'
+  fr: 'Français'
+  ru: 'Русе'
+  zh-CN: '中文'

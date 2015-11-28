@@ -29,6 +29,10 @@ content_type: news
         {{ news.body }}
       </div>
 
+      <div>
+        {{ news.photos.size }}
+      </div>
+
       {% if news.photos.size > 0 %}
         <h3>Photos</h3>
           <div class="photos row">

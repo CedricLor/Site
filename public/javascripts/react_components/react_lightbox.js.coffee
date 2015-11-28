@@ -112,4 +112,6 @@ create_light_box_with = (dom_element) ->
 ########################################
 $ ->
   dom_elements = document.getElementsByClassName("react-lightbox")
+  console.log("hello")
+  console.log(dom_elements)
   create_light_box_with dom_element for dom_element in dom_elements

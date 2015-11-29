@@ -53,4 +53,37 @@ meta_description:
         {% endfor %}
       </div>
     {% endeditable_model %}
+
+    {% assign data = '[{' %}
+    {% for news in contents.news %}
+
+      {% assign data = data | concat: "imageSrc:'" %}
+      {% if news.featured_image.url %}
+        {% assign resized_picture_url = news.featured_image.url | resize: '400x200#' | json %}
+        {% assign data = data | concat: resized_picture_url %}
+      {% assign data = data | concat: "," %}
+      {% endif %}
+
+      {% assign news_title = news.title | escape | strip | json %}
+      {% assign data = data | concat: "newsTitle:" %}
+      {% assign data = data | concat: news_title | concat: "," %}
+
+      {% assign newsTeaser = news.teaser | json %}
+      {% assign data = data | concat: "newsTeaser:" | concat: newsTeaser | concat: "," %}
+
+      {% assign readMoreLocalized = 'read_more' | translate | json %}
+      {% assign data = data | concat: "readMoreMessage:" | concat: readMoreLocalized | concat: "," %}
+
+      {% assign pathToNews = path_to news | json %}
+      {% assign data = data | concat: "pathToNews:" | concat: pathToNews %}
+      {% unless news.last %}
+        {% assign data = data | concat: "},{" %}
+      {% endunless %}
+    {% endfor %}
+    {% assign data = data | concat "}]" %}
+
+    <div data-for-react="{{ data }}">
+
+    </div>
+
   {% endblock %}

@@ -1,6 +1,6 @@
 ---
 title: Default layout
-is_layout: false
+is_layout: true
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -46,12 +46,25 @@ is_layout: false
     <![endif]-->
   </head>
   <body class="page-{{ page.slug }}">
-    {% include 'nav' %}
+
+    {% comment %} helper for the language switcher {% endcomment %}
+    {% if page.depth > 1 %}
+      {% assign parent_page = page.parent %}
+      {% for depth in (page.depth..2) %}
+        {% assign parent_slug = parent_page.slug | append: "/" %}
+        {% assign parent_page = parent_page.parent %}
+      {% endfor %}
+    {% else %}
+      {% assign parent_slug = "" %}
+    {% endif %}
+
+
+    {% include 'nav', parent_slug: parent_slug %}
 
     {% block content %}
     {% endblock %}
 
-    {% include 'footer' %}
+    {% include 'footer', parent_slug: parent_slug %}
 
     {% include 'js_footer' %}
 

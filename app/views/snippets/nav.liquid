@@ -13,7 +13,7 @@
       <ul class="nav navbar-nav navbar-right">
 
         {% for page_in_nav in site.pages %}
-          {% if page_in_nav.depth == 0 or page_in_nav.depth == 1 or page_in_nav.depth == null %}
+          {% if page_in_nav.depth == 1 or page_in_nav.depth == null %}
           {% comment %} depth == 0 catches index, depth == 1 catches about, depth == null catches news {% endcomment %}
             <li class="{% if page.slug == page_in_nav.slug %}active{% endif %}">
               {% link_to page_in_nav %}
@@ -24,13 +24,9 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ 'languages' | translate }}<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            {% for locale_string in locales %}
-              {% assign locale_string = locale_string | strip | strip_newlines %}
-              {% assign locale = locale | strip | strip_newlines %}
-              {% unless locale_string == locale %}
-                <li><a href="/{{ locale_string }}/{{ page.fullpath }}">{{ locale_string | translate }}</a></li>
-              {% endunless %}
-            {% endfor %}
+
+          {% include 'language_switcher_helper', parent_slug: parent_slug %}
+
           </ul>
         </li>
 

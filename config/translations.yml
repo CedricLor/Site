@@ -64,3 +64,25 @@ locale:
   fr: 'Français'
   ru: 'Русе'
   zh-CN: '中文'
+
+the_following_errors _occured:
+  en: "The following errors occured"
+  fr: "Les erreurs suivantes sont intervenues :"
+
+email:
+  en: 'Email'
+  fr: "Email"
+  ru: "Эл. адрес"
+  zh-CN: "电子邮件"
+
+user_message:
+  en: "Message"
+  fr: "Message"
+  ru: "Сообщение"
+  zCH: "信息"
+
+Submit:
+  en: "Submit"
+  fr: "Envoyer"
+  ru:  "Отправить"
+  zCH: "提交"

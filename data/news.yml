@@ -3,7 +3,7 @@
     title:
       fr: Mon actualité en anglais (traduite en français)
       ru: Мои новости пост на английском языке (перевод на русском)
-      zh-CN: Мои новости пост на английском языке (перевод на китайском языке)
+      zh-CN: 我的英语新闻发布（翻译成中国）
     posted_at: '2015-11-11 18:00:00 +0100'
     tags: [Languages, Internationalization, English, French]
     featured_image: samples/placeholders/640x480.png

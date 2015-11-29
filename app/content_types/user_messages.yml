@@ -1,7 +1,7 @@
 name: User messages
 slug: user_messages
 description: Messages submitted via the website
-label_field_name: name
+label_field_name: email
 order_by: created_at
 order_direction: asc
 # Specify a field slug to group entries by that field in the back-office.
@@ -18,10 +18,6 @@ public_submission_enabled: true
 # entry_template: '<a href="{{ link }}">{{ entry._label }}</a>' # The default template
 
 fields:
-- name:
-    label: Name
-    type: string
-    required: true
 - email:
     label: Email
     type: string
